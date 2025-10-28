@@ -10,14 +10,11 @@ They use WordPress, so I simply added an HTML widget through the Elementor UI co
 
 - **This is the popup:**
 
-![Alt text](https://raw.githubusercontent.com/renato-fb/client-automation-use-cases/refs/heads/main/02_canada-immigration-leads/assets/screenshots/expo-form.jpg)
+![Alt text](https://github.com/renato-fb/client-automation-use-cases/blob/main/02_canada-immigration-leads/assets/screenshots/expo-form.jpg?raw=true)
 
 ### ⓕ 1.2 Configuring a Meta dev account to send a request containing lead information captured in an ad form to a webhook in n8n.
 
 The title is pretty self-explanatory. This was also pretty straightforward, even though I had a bit of a difficult time understanding how Meta's API works. I found that they have very confusing documentation regarding lead capturing, at least form-wise. This could also be because this is the first time I performed an integration with Meta.
-
-- **This is the automation responsible for doing this:**
-  ![Alt text](https://raw.githubusercontent.com/renato-fb/client-automation-use-cases/refs/heads/main/02_canada-immigration-leads/assets/screenshots/captacao-fb-leads-expo.jpg)
 
 ## ⭐ 2. Creating the actual automations for lead processing
 
@@ -32,7 +29,7 @@ In this part, I used n8n (responsible for the bulk of the automation), Chatwoot 
   -> A QR code is generated and saved into the database in base64 format through a public API (https://api.qrserver.com/v1/) with the query parameter of the user ID. This QR code is to be scanned by a staff member at the entrance on the days of the event only in order to determine who showed up since the entry is free. (The platform that will be used for the QR code scanning was also created by me as it will be showcased later) \
   -> A text message and one of 3 images are sent (each containing different city texts according to the event chosen, since all 3 are in different cities). The text message and image are sent to the lead as follows:
 
-![Alt text](https://raw.githubusercontent.com/renato-fb/client-automation-use-cases/refs/heads/main/02_canada-immigration-leads/assets/screenshots/main-automation.jpg)
+![Alt text](https://github.com/renato-fb/client-automation-use-cases/blob/main/02_canada-immigration-leads/assets/screenshots/main-automation.jpg?raw=true)
 
 All of the requests are sent using Evolution API \
 -> The chosen city is filtered in order to fetch the right image URL and email description to be appended to the email that is to be also sent to the user
@@ -45,7 +42,7 @@ All of the requests are sent using Evolution API \
 
 ### 2.2 The workflow responsible for capturing leads from Meta forms
 
-![Alt text](https://raw.githubusercontent.com/renato-fb/client-automation-use-cases/refs/heads/main/02_canada-immigration-leads/assets/screenshots/captacao-fb-leads-expo.jpg)
+![Alt text](https://github.com/renato-fb/client-automation-use-cases/blob/main/02_canada-immigration-leads/assets/screenshots/captacao-fb-leads-expo.jpg?raw=true)
 
 This is a relatively simple workflow. It receives the request in the webhook by Meta whenever an ad form is filled, and the data pertaining to that lead is sent to the main workflow to be fully registered and processed.
 
@@ -53,7 +50,7 @@ This is a relatively simple workflow. It receives the request in the webhook by 
 
 When the day of the event arrives, there will be a need for attendees to have their QR code (which was generated previously and sent to their WhatsApp) scanned. This page was created for the person managing entry to the event to be able to scan these QR codes. Here's the UI:
 
-![Alt text](https://raw.githubusercontent.com/renato-fb/client-automation-use-cases/refs/heads/main/02_canada-immigration-leads/assets/screenshots/qr-admin.png)
+![Alt text](https://github.com/renato-fb/client-automation-use-cases/blob/main/02_canada-immigration-leads/assets/screenshots/qr-admin.png?raw=true)
 
 As soon as the QR code is read, a request is made to an automation that sets the status of the lead in the database to "checked-in". The database also has a column that counts how many times the QR code was read to be able to track how many people have entered, even if the same QR code is scanned multiple times (e.g., when it's shared with friends or family who will be attending the same event). I will not show this automation since its rather simple.
 
@@ -92,3 +89,4 @@ These columns store a JSON object (or `null`) that records the status of communi
 ## 🛠️ Technologies Used
 
 ![n8n](https://img.shields.io/badge/n8n-FF6D5A?style=for-the-badge&logo=n8n&logoColor=white) ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white) ![Evolution API](https://img.shields.io/badge/Evolution_API-25D366?style=for-the-badge&logo=whatsapp&logoColor=white) ![Chatwoot](https://img.shields.io/badge/Chatwoot-FF6B6B?style=for-the-badge&logo=chatwoot&logoColor=white) ![WordPress](https://img.shields.io/badge/WordPress-21759B?style=for-the-badge&logo=wordpress&logoColor=white) ![Meta API](https://img.shields.io/badge/Meta_API-1877F2?style=for-the-badge&logo=meta&logoColor=white) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
